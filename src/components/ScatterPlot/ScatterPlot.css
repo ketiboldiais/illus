@@ -1,0 +1,13 @@
+.scatter-plot-circle {
+	fill: #ebffff;
+	stroke: #1572a1;
+}
+.axis-label {
+	font-size: 0.9rem;
+	fill: #1597bb;
+}
+.axis-text {
+	fill: #1597bb;
+}
+.axis-line { stroke: #1597bb; }
+.axis-path { stroke: #1597bb; }

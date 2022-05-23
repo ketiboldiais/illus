@@ -1,0 +1,8 @@
+.node-text {font-size: 0.6rem;}
+.tree-edge { stroke: #CC7351; }
+.node-circle { stroke: #eb8242; }
+.node-circle-branch { fill: #ffeb99; }
+.node-circle-leaf {
+	fill: #E7FBBE;
+	stroke: green;
+}

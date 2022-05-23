@@ -1,0 +1,325 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+
+import { Source } from "@storybook/addon-docs";
+
+import { BinaryTree } from "../components/BinaryTree/BinaryTree";
+
+<Meta
+	title="Binary Tree"
+	parameters={{
+		viewMode: 'docs',
+		previewTabs: {
+			canvas: {hidden: true}
+		}
+	}}
+	argTypes={{
+		data: {
+			description: "An array of arrays of object literals or primitives",
+			table: {
+				type: {
+					summary: "[ {val: <number | string>} | number | string ]",
+				},
+			},
+		},
+		width: {
+			description: "The width of the SVG",
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		height: {
+			description: "The height of the SVG",
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		narrow: {
+			description: "How narrow the tree should be",
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		containerWidth: {
+			description: "The width of the container (measured in %)",
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		containerHeight: {
+			description: "The height of the container (measured in %)",
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		marginTop: {
+			description: "The SVG's top margin",
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		marginRight: {
+			description: "The SVG's right margin",
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		marginBottom: {
+			description: "The SVG's bottom margin",
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		marginLeft: {
+			description: "The SVG's left margin",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		margins: {
+			description: "The SVG's margins as a single array",
+			table: {
+				type: {
+					summary: "[top, right, bottom, left]",
+				},
+			},
+		},
+		edgeLength: {
+			description: "The length of each edge between the nodes.",
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		isDirected: {
+			description: "Renders arrows on the edges.",
+			control: "boolean",
+			table: {
+				type: {
+					summary: "boolean",
+				},
+			},
+		},
+		nodeRadius: {
+			description: "Sets the size of each node circle.",
+			control: "number",
+			table: {
+				type: {
+					summary: "boolean",
+				},
+			},
+		},
+		nodeTextColor: {
+			description: "Sets the color of the node text.",
+			control: "color",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		nodeStrokeColor: {
+			description: "Sets the node circle's stroke color.",
+			control: "color",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		nodeFillColor: {
+			description: "Sets the node circle's fill color.",
+			control: "color",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		markBalanceFactor: {
+			description:
+				"Renders the balance factor values (in terms of height) for each node",
+			control: "boolean",
+			table: {
+				type: {
+					summary: "boolean",
+				},
+			},
+		},
+		markHeight: {
+			description: "Renders the height of each node",
+			control: "boolean",
+			table: {
+				type: {
+					summary: "boolean",
+				},
+			},
+		},
+		markDepth: {
+			description: "Renders the depth of each node",
+			control: "boolean",
+			table: {
+				type: {
+					summary: "boolean",
+				},
+			},
+		},
+		markLevels: {
+			description: "Renders the tree's levels.",
+			control: "boolean",
+			table: {
+				type: {
+					summary: "boolean",
+				},
+			},
+		},
+		nodeTextFontSize: {
+			description: "Sets the font size for the node labels.",
+			control: "text",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		balancedTextColor: {
+			description: "Sets text color for balanced node values.",
+			control: "color",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		imbalancedTextColor: {
+			description: "Sets text color for imbalanced node values.",
+			control: "color",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		edgeColor: {
+			description: "Sets the color for the tree's edges.",
+			control: "color",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		edgeThickness: {
+			description: "Sets stroke-width for the tree's edges.",
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		heightFontSize: {
+			description: "Sets the font size for the height markers.",
+			control: "text",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		balanceFactorFontSize: {
+			description: "Sets the font size for the balance factor markers.",
+			control: "text",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		levelLineColor: {
+			description: "Sets the level line color.",
+			control: "color",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		levelTextColor: {
+			description: "Sets the color for the level marker text.",
+			control: "color",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		levelFontSize: {
+			description: "Sets the font size for the level marker text.",
+			control: "text",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+	}}
+	component={BinaryTree}
+/>
+
+export const Template = (args) => <BinaryTree {...args} />;
+
+# Binary Trees
+
+Binary trees are used extensively in computer science. The `BinaryTree`
+module provides a component for rendering binary trees.
+
+<Story
+	name="Binary Tree"
+	args={{
+		data: [
+			[1, [2, 3]],
+			[2, [4, 5]],
+			[3, [7, 8]],
+			[4, [11, 17]],
+			[5, [22, null]],
+			[11, [32, 28]],
+			[17, [19, null]],
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Binary Tree" />

@@ -1,0 +1,25 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+
+import { Plot } from "../components/Plot/Plot";
+
+<Meta title="Introduction" />
+
+# Illus
+
+`Illus` (short for "Illustration") is a component library for rendering
+math- and computer science-related diagrams. Illus grew out of a need to
+quickly create diagrams during lectures and seminars. With the advent of
+tools like NextJS, MDX, and KaTeX, attendees can write:
+
+```md
+<Plot functions={[ { f: (x) => Math.sin(x) }, ]}/>
+```
+
+to render:
+
+<Plot functions={[{ f: (x) => Math.sin(x) }]} />

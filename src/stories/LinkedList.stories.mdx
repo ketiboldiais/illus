@@ -1,0 +1,36 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+
+import { LinkedList } from "../components/LinkedList/LinkedList";
+
+<Meta
+	title="Linked List"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={LinkedList}
+/>
+
+export const Template = (args) => <LinkedList {...args} />;
+
+# Linked Lists
+
+Binary trees are used extensively in computer science. The `BinaryTree`
+module provides a component for rendering binary trees.
+
+<Story
+	name="Linked List"
+	args={{
+		data:[1,2,3,4,5]
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Linked List" />
