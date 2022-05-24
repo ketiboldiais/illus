@@ -1,0 +1,48 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { Spectrum } from "../components/Spectrum/Spectrum";
+
+<Meta
+	title="Spectrum"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={Spectrum}
+/>
+
+export const Template = (args) => <Spectrum {...args} />;
+
+# Spectrum
+
+Some data consists of regions along a spectrum rather than explicit,
+discrete values—e.g., gender identification, moral culpability, judicial
+standards of review, and so on. Nevertheless, we might want to visualize
+this data somehow. For that, we can use a spectrum bar:
+
+<Story
+	name="Spectrum"
+	args={{
+		colors: ["lime", "gold", "red"],
+		alternateBy: 2,
+		textPadding: 4,
+		data: [
+			"De Novo",
+			"Clearly Erroneous",
+			"Reasonableness",
+			"Arbitrary & Capricious",
+			"Abuse of Discretion",
+			"Reasonable Jury",
+			"No Review",
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Spectrum" />

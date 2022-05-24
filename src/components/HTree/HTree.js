@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./HTree.css";
 import { svg } from "../utils/svg/svg";
 import { generateHTreeData } from "./generateHTreeData/generateHTreeData";
 import { insertArrowDefinitions } from "../utils/insertArrowDefinitions/insertArrowDefinitions";
@@ -13,19 +12,20 @@ export const HTree = ({
 	data = [],
 	width = 400,
 	height = 400,
-	containerWidth = 70,
-	containerHeight = 70,
+	containerWidth = 90,
+	containerHeight = 90,
 	margins = [70, 70, 70, 70],
 	isDirected = true,
+	fontFamily="system-ui",
 	sibSpace = 1,
 	nSibSpace = 2,
 	edgeLength = null,
 	nodeRadius = 7,
-	nodeFillColor = "",
-	nodeTextColor = "",
-	nodeStrokeColor = "",
-	nodeTextFontSize = "",
-	edgeColor = "",
+	nodeFillColor = "#FFF9F9",
+	edgeColor = "#D77FA1",
+	nodeTextColor = "#A68DAD",
+	nodeStrokeColor = edgeColor,
+	nodeTextFontSize = "0.7rem",
 	edgeThickness = "1",
 	hideNodeCircles = false,
 }) => {
@@ -101,6 +101,7 @@ export const HTree = ({
 		const nodeText = _node.append("text").text((d) => d.id);
 		attrs(_node.selectAll("text"), {
 			class: "htree-node-text",
+			"font-family": fontFamily,
 			dy: (d, i) => {
 				if (!d.children) return "-1em";
 				else if (i % 2 === 0) return "-1em";

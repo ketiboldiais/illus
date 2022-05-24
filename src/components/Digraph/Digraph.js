@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./Digraph.css";
 import { generateEdges } from "../Graph/generateEdges/generateEdges";
 import { generateNodes } from "../Graph/generateNodes/generateNodes";
 import { svg } from "../utils/svg/svg";
@@ -13,18 +12,19 @@ export const Digraph = ({
 	data = [[], [], []],
 	width = 300,
 	height = 300,
-	containerWidth = 60,
-	containerHeight = 60,
+	fontFamily="system-ui",
+	containerWidth = 80,
+	containerHeight = 80,
 	collisionRadius = 30,
 	forceStrength = 0.1,
 	forceDistance = 5,
-	edgeColor,
-	nodeFillColor,
-	nodeStrokeColor,
-	nodeTextFontSize,
-	nodeTextColor,
-	strokeWidth,
-	arrowFillColor,
+	edgeColor="#D8B384",
+	nodeFillColor="#F3F0D7",
+	nodeStrokeColor="#CC9B6D",
+	nodeTextFontSize="0.7rem",
+	nodeTextColor=nodeStrokeColor,
+	strokeWidth=1,
+	arrowFillColor=edgeColor,
 	nodeRadius = 5,
 	margins = [30, 30, 30, 30],
 }) => {
@@ -92,6 +92,7 @@ export const Digraph = ({
 		const nodeLabelOutline = _node.append("text").text((d) => d.id);
 
 		attrs(nodeLabelOutline, {
+			"font-family": fontFamily,
 			class: "digraph-node-text",
 			dy: '1em',
 			"stroke-width": '3px',
@@ -102,6 +103,7 @@ export const Digraph = ({
 
 		const nodeLabels = _node.append("text").text((d) => d.id);
 		attrs(nodeLabels, {
+			"font-family": fontFamily,
 			class: "digraph-node-text",
 			fill: nodeTextColor,
 			dy: "1em",

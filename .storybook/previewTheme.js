@@ -1,6 +1,6 @@
 import { create } from "@storybook/theming";
 
-const theme = create({
+const previewTheme = create({
 	base: "light", // this will inherit the base properties of Storybooks'light theme
 
 	// Base color
@@ -13,7 +13,7 @@ const theme = create({
 	appBorderRadius: 4,
 
 	// Typography
-	fontBase: '"Old Standard TT", sans-serif',
+	fontBase: '"Open Sans", sans-serif',
 	fontCode: "Fira Mono",
 
 	// Text colors
@@ -37,4 +37,4 @@ const theme = create({
 	brandUrl: "https://ketiboldiais.com/",
 });
 
-export default theme;
+export default previewTheme;

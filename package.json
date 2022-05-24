@@ -1,15 +1,28 @@
 {
   "name": "illus",
-  "version": "1.0.0",
-  "description": "A component library for rendering math and CS diagrams",
-  "main": "index.js",
+  "version": "1.0.3",
+  "description": "A React component library for rendering math and CS diagrams.",
+  "keywords": ["diagrams", "function plot", "schematics", "graphics"],
+  "homepage": "https://ketiboldiais.github.io/illus/",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": ["dist"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "deploy-storybook": "storybook-to-ghpages",
     "build-lib": "rollup -c"
   },
-  "author": "ketiboldiais <numerstack@gmail.com>",
+  "author": {
+    "name": "Ketib Oldiais",
+    "email": "koldiais@gmail.com",
+    "url": "https://ketiboldiais.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ketiboldiais/illus"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.0",
@@ -25,6 +38,7 @@
     "@storybook/builder-webpack4": "^6.5.3",
     "@storybook/manager-webpack4": "^6.5.3",
     "@storybook/react": "^6.5.3",
+    "@storybook/storybook-deployer": "^2.8.11",
     "@storybook/testing-library": "^0.0.11",
     "@storybook/theming": "^6.5.3",
     "babel-loader": "^8.2.5",

@@ -1,0 +1,34 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { Queue } from "../components/Queue/Queue";
+
+<Meta
+	title="Queues"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={Queue}
+/>
+
+export const Template = (args) => <Queue {...args} />;
+
+# Queues
+
+Closely related are queues:
+
+<Story
+	name="Queues"
+	args={{
+		data: [5, 8, 9, 7, 3],
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Queues" />

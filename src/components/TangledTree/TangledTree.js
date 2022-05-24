@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./TangledTree.css";
 import { svg } from "../utils/svg/svg";
 import { Base } from "../base/Base";
 import * as d3 from "d3";

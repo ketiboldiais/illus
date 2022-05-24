@@ -1,0 +1,50 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { Graph } from "../components/Graph/Graph";
+
+<Meta
+	title="Graphs"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={Graph}
+/>
+
+export const Template = (args) => <Graph {...args} />;
+
+# Graphs
+
+Graphs provide a way to show relationship between entities.
+
+<Story
+	name="Graphs"
+	args={{
+		data: [
+			{ link: ["Allen", "Sam", "Barry"] },
+			{ link: ["Jamie", "Barry"] },
+			{ link: ["Kent"] },
+			{ link: ["Dave", "Jill", "Yuri"] },
+			{ link: ["Kyle", "Yuri"] },
+			{ link: ["John", "Barry"] },
+			{ link: ["Kate", "John"] },
+			{ link: ["Elaine", "Julie"] },
+			{ link: ["Soyoung", "Julie"] },
+			{ link: ["Kento", "Julie"] },
+			{ link: ["Hikari", "Allen"] },
+			{ link: ["Yumiko", "Hikari"] },
+			{ link: ["Mo", "Hikari"] },
+			{ link: ["Sal", "Hikari"] },
+			{ link: ["Dan"] },
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Graphs" />

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { isObjectLiteral } from "../utils/isObjectLiteral/isObjectLiteral";
 import { translate } from "../utils/translate/translate";
 import { svg } from "../utils/svg/svg";

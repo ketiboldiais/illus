@@ -1,0 +1,39 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { Plot } from "../components/Plot/Plot";
+
+<Meta
+	title="2D Plot"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={Plot}
+/>
+
+export const Template = (args) => <Plot {...args} />;
+
+# Two-dimensional Plot
+
+Illus can plot some simple functions:
+
+<Story
+	name="2D Plot"
+	args={{
+		functions:[
+			{ f: (x) => Math.sin(x), color: "#68b700" },
+			{ f: (x) => -Math.sin(x), color: "#AD62AA" },
+			{ f: (x) => Math.cos(x), color: "#E94560" },
+			{ f: (x) => -Math.cos(x), color: "#29C7AC" },
+		]
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="2D Plot" />

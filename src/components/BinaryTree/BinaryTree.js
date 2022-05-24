@@ -1,12 +1,10 @@
 import React, { useRef, useEffect } from "react";
-import "./BinaryTree.css";
 import { svg } from "../utils/svg/svg";
 import { Base } from "../base/Base";
 import * as d3 from "d3";
 import { setValue } from "../utils/setValue/setValue";
 import { attrs } from "../utils/attrs/attrs";
 import { insertArrowDefinitions } from "../utils/insertArrowDefinitions/insertArrowDefinitions";
-import { isNotUndefined } from "../utils/isNotUndefined/isNotUndefined";
 import { renderLevelMarks } from "../Tree/renderLevelMarks/renderLevelMarks";
 import { renderDepthMarks } from "../Tree/renderDepthMarks/renderDepthMarks";
 import { renderHeightMarks } from "../Tree/renderHeightMarks/renderHeightMarks";
@@ -25,6 +23,7 @@ export const BinaryTree = ({
 	marginLeft = 20,
 	marginBottom = 20,
 	marginRight = 20,
+	fontFamily="system-ui",
 	margins = [
 		marginTop,
 		marginRight + narrow,
@@ -171,7 +170,7 @@ export const BinaryTree = ({
 			.filter((d) => !d.data.display)
 			.filter((d) => !d.data.label)
 			.append("text")
-			.text((d) => d.id);
+			.text((d) => d.id)
 		attrs(dataField, {
 			class: (d) => {
 				if (d.data.focus) {
@@ -184,6 +183,7 @@ export const BinaryTree = ({
 						: "binary-tree-node-text binary-tree-node-branch-text";
 				}
 			},
+			"font-family": fontFamily,
 			x: (d) => d.x,
 			y: (d) => {
 				if (d.data.noCircle) {

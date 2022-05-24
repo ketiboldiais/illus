@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./Bipartite.css";
 import { svg } from "../utils/svg/svg";
 import { Base } from "../base/Base";
 import * as d3 from "d3";
@@ -327,10 +326,11 @@ export const Bipartite = ({
 	containerWidth = 60,
 	containerHeight = 60,
 	margins = [30, 30, 30, 30],
-	edgeColor,
+	fontFamily="system-ui",
+	edgeColor="teal",
 	nodeStrokeWidth = 1,
-	nodeStrokeColor,
-	nodeFillColor,
+	nodeStrokeColor="teal",
+	nodeFillColor="#e5fff9",
 	nodeRadius = 5,
 	nodeTextColor,
 	nodePadding = null,
@@ -414,6 +414,7 @@ export const Bipartite = ({
 		});
 		node.append("text").text((d) => d.name);
 		attrs(node.selectAll("text"), {
+			"font-family": fontFamily,
 			class: "bipartite-node-text",
 			fill: nodeTextColor,
 			dy: -nodeRadius * 2,

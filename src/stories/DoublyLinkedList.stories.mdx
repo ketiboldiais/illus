@@ -1,0 +1,122 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { DoublyLinkedList } from "../components/DoublyLinkedList/DoublyLinkedList";
+
+<Meta
+	title="Doubly-linked Lists"
+	parameters={{
+		viewMode: "docs",
+	}}
+	argTypes={{
+		data: {
+			description: "An array of arrays of object literals or primitives",
+			table: {
+				type: {
+					summary: "Object/Primitive",
+				},
+			},
+		},
+		fontFamily: {
+			description: "Primary font family",
+			control: "text",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		listName: {
+			description: `The list's identifier. Rendered above as "root."`,
+			control: "text",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		width: {
+			description: `The SVG's width`,
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		height: {
+			description: `The SVG's height`,
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		containerWidth: {
+			description: `Percentage of the parent container's width taken up by the SVG.`,
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		containerHeight: {
+			description: `Percentage of the parent container's height taken up by the SVG.`,
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		fontSize: {
+			description: `Text font size (measured in pixels)`,
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+		fontColor: {
+			description: `Text font color`,
+			control: "color",
+			table: {
+				type: {
+					summary: "string",
+				},
+			},
+		},
+		dataFieldFontSize: {
+			description: `Font size for the data field text (measured in pixels).`,
+			control: "number",
+			table: {
+				type: {
+					summary: "number",
+				},
+			},
+		},
+	}}
+	component={DoublyLinkedList}
+/>
+
+export const Template = (args) => <DoublyLinkedList {...args} />;
+
+# Doubly-linked Lists
+
+When a single link isn't enough, there are doubly-linked lists:
+
+<Story
+	name="Doubly-linked Lists"
+	args={{
+		data: [5, 8, 9, 2, 1],
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Doubly-linked Lists" />

@@ -24,6 +24,15 @@ export const CircularList = ({
 	data = [],
 	width = 240,
 	height = 60,
+	textColor = "black",
+	fontSize = "0.7rem",
+	fontFamily="system-ui",
+	fill="white",
+	dataFieldFill = "#FAF0D7",
+	nextFieldFill = "#FDCEB9",
+	indexFieldTextColor= "black",
+	indexFieldFontSize= "0.5rem",
+	strokeColor = "black",
 	containerWidth = 80,
 	containerHeight = 25,
 	margins = [20, 25, 20, 20],
@@ -71,11 +80,12 @@ export const CircularList = ({
 			.attr("class", "node-data-field-rectangle")
 			.attr("width", nodeWidth)
 			.attr("height", nodeHeight)
-			.attr("stroke", "black")
-			.attr("fill", "white");
+			.attr("stroke", strokeColor)
+			.attr("fill", dataFieldFill ? dataFieldFill : fill);
 		const dataFieldText = dataField
 			.append("text")
 			.attr("class", "node-data-field-text")
+			.attr('font-family', fontFamily)
 			.attr("text-anchor", "middle")
 			.attr("x", nodeWidth / 2)
 			.attr("y", nodeHeight / 2)
@@ -86,9 +96,10 @@ export const CircularList = ({
 			dataField
 				.append("text")
 				.attr("class", "node-index-text")
+				.attr('font-family', fontFamily)
 				.attr("text-anchor", "middle")
-				.attr("fill", "black")
-				.style("font-size", "7px")
+				.attr("fill", indexFieldTextColor ? indexFieldTextColor : textColor)
+				.style("font-size", indexFieldFontSize ? indexFieldFontSize : fontSize)
 				.attr("x", nodeWidth / 1.5)
 				.attr("y", nodeHeight + 10)
 				.text((d, i) => i);
@@ -102,7 +113,7 @@ export const CircularList = ({
 		const nextFieldRectangle = nextField
 			.append("rect")
 			.attr("stroke", "black")
-			.attr("fill", "white")
+			.attr("fill", nextFieldFill ? nextFieldFill : fill)
 			.attr("width", nodeWidth / 2)
 			.attr("height", nodeHeight);
 
@@ -144,6 +155,7 @@ export const CircularList = ({
 
 		const rootPointerText = rootPointer
 			.append("text")
+			.attr('font-family', fontFamily)
 			.attr("class", "root-pointer-text")
 			.attr("text-anchor", "start")
 			.attr('x', -nodeWidth / 8)

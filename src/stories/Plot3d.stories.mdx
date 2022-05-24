@@ -1,0 +1,41 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { Plot3D } from "../components/Plot3D/Plot3D";
+
+<Meta
+	title="3D Plot"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={Plot3D}
+/>
+
+export const Template = (args) => <Plot3D {...args} />;
+
+# Three-dimensional Plots
+
+Illus can also plot slightly more complex functions:
+
+<Story
+	name="3D Plot"
+	args={{
+		functions: [
+			{
+				f: (x, y) => Math.sin((Math.sqrt(x * x + y * y) / 5) * Math.PI),
+				domain: [-20, 20],
+				range: [-20, 20],
+				scale: 70,
+			},
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="3D Plot" />

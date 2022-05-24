@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./CircularQueue.css";
 import { svg } from "../utils/svg/svg";
 import { Base } from "../base/Base";
 import * as d3 from "d3";
@@ -16,13 +15,16 @@ export const CircularQueue = ({
 	containerHeight = 30,
 	margins = [80, 55, 80, 55],
 	isIndexed = true,
+	fontFamily="system-ui",
 	outerRadius = null,
 	innerRadius = null,
-	elementFillColor = "",
-	elementStrokeColor = "",
-	elementTextColor = "",
-	indexTextColor = "",
-	strokeWidth = "",
+	elementFillColor = "#f1ffd5",
+	elementStrokeColor = "#99A799",
+	elementTextColor = "#2b7857",
+	elementFontSize="1rem",
+	indexFontSize="0.75rem",
+	indexTextColor = "#9dc8af",
+	strokeWidth = 2,
 }) => {
 	const circularQueueFigure = useRef();
 	const _svg = svg(width, height, margins);
@@ -61,8 +63,10 @@ export const CircularQueue = ({
 		});
 		const queuerLabel = queuer.append("text").text((d) => d.data.val);
 		attrs(queuerLabel, {
+			"font-family": fontFamily,
 			class: "queuer-data-text",
 			dy: "0.3em",
+			"font-size": elementFontSize,
 			"text-anchor": "middle",
 			transform: (d) => `translate(${arc.centroid(d)})`,
 			fill: elementTextColor,
@@ -76,7 +80,9 @@ export const CircularQueue = ({
 				.append("text")
 				.text((d, i) => i);
 			attrs(queuerIndexText, {
+				"font-family": fontFamily,
 				class: "queuer-index-text",
+				"font-size": indexFontSize,
 				"text-anchor": "middle",
 				dy: "0.35em",
 				fill: indexTextColor,

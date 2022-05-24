@@ -1,0 +1,52 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { Digraph } from "../components/Digraph/Digraph";
+
+<Meta
+	title="Digraph"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={Digraph}
+/>
+
+export const Template = (args) => <Digraph {...args} />;
+
+# Digraphs
+
+Illus renders bar plots with a matrix of arrays.
+
+<Story
+	name="Digraph"
+	args={{
+		data:[
+			{ link: ["node1", "node2"] },
+			{ link: ["node2", "node1"] },
+			{ link: ["node3", "node2"] },
+			{ link: ["node2", "node3"] },
+			{ link: ["node4", "node1"] },
+			{ link: ["node1", "node4"] },
+			{ link: ["node2", "node6"] },
+			{ link: ["node3", "node4"] },
+			{ link: ["node4", "node5"] },
+			{ link: ["node5", "node4"] },
+			{ link: ["node1", "node5"] },
+			{ link: ["node5", "node1"] },
+			{ link: ["node4", "node7"] },
+			{ link: ["node6", "node2"] },
+			{ link: ["node2", "node6"] },
+			{ link: ["node7", "node3"] },
+			{ link: ["node3", "node7"] },
+		]
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Digraph" />

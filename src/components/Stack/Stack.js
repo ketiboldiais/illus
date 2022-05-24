@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./Stack.css";
 import { isObjectLiteral } from "../utils/isObjectLiteral/isObjectLiteral";
 import { setConditionalValue } from "../utils/setConditionalValue/setConditionalValue";
 import { setValue } from "../utils/setValue/setValue";

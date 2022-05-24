@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./ScatterPlot.css";
 import { isObjectLiteral } from "../utils/isObjectLiteral/isObjectLiteral";
 import { translate } from "../utils/translate/translate";
 import { svg } from "../utils/svg/svg";

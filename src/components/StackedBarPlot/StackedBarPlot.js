@@ -1,7 +1,5 @@
 import React, { useRef, useEffect } from "react";
 import { isObjectLiteral } from "../utils/isObjectLiteral/isObjectLiteral";
-import "./StackedBarPlot.css";
-import { translate } from "../utils/translate/translate";
 import csvData from "../demoData/congressData.csv";
 import { svg } from "../utils/svg/svg";
 import { setValue } from "../utils/setValue/setValue";

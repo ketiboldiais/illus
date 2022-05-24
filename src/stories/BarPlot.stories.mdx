@@ -1,0 +1,50 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { BarPlot } from "../components/BarPlot/BarPlot";
+
+<Meta
+	title="Bar Plot"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={BarPlot}
+/>
+
+export const Template = (args) => <BarPlot {...args} />;
+
+# Bar Plots
+
+Bar plots are another simple data visualization tool. For example, here is
+a plot of the number of character deaths for each film in the _Saw_
+franchise.
+
+<Story
+	name="Bar Plot"
+	args={{
+		data: [
+			["Saw (2004)", 6, "51%"],
+			["Saw II (2005)", 8, "37%"],
+			["Saw III (2006)", 10, "29%"],
+			["Saw IV (2007)", 11, "19%"],
+			["Saw V (2008)", 6, "13%"],
+			["Saw VI (2009)", 13, "40%"],
+			["Saw 3D (2010)", 27, "10%"],
+			["Jigsaw (2017)", 17, "31%"],
+			["Spiral (2021)", 8, "37%"],
+		],
+		xTickRotate: 45,
+		xAxisLabel: "film",
+		colorWeight: ["#FFE194", "#FF616D"],
+		yAxisLabel: "deaths",
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Bar Plot" />

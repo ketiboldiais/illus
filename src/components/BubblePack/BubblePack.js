@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./BubblePack.css";
 import { translate } from "../utils/translate/translate";
 import { svg } from "../utils/svg/svg";
 import { getArrayMax } from "../utils/getArrayMax/getArrayMax";
@@ -13,6 +12,8 @@ export const BubblePack = ({
 	width = 420,
 	height = 420,
 	colorWeight = ["#e0fffe", "#f9fffe"],
+	fontFamily="system-ui",
+	fontSize="0.7rem",
 	containerWidth = 80,
 	containerHeight = 80,
 	margins = [50, 50, 50, 50],
@@ -58,13 +59,16 @@ export const BubblePack = ({
 			.append('g')
 			.attr('transform', translate(xText, yText))
 			.append("text")
+			.attr('font-family', fontFamily)
 			.attr("text-anchor", "middle")
+			.attr('font-size', fontSize)
 			.attr("class", "bubble-pack-circle-label leaf-node-label")
 			.text((d) => d.data.id)
 			.call(wrap, textWrap)
 		const circleLabelHasChildren = nodes
 			.filter((d) => d.children)
 			.append("text")
+			.attr('font-family', fontFamily)
 			.attr("class", "bubble-pack-circle-label branch-node-label")
 			.attr("text-anchor", "middle")
 			.attr("dy", (d) => -d.r - 10)

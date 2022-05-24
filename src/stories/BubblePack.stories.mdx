@@ -1,0 +1,52 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { BubblePack } from "../components/BubblePack/BubblePack";
+
+<Meta
+	title="Bubble Pack"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={BubblePack}
+/>
+
+export const Template = (args) => <BubblePack {...args} />;
+
+# Bubble Pack
+
+Bubble packs are a useful visualization for sizes and relationships. For
+example, the bubble pack below visualizes the relative tenure lengths for
+each U.S. Supreme Court Chief Justice.
+
+<Story
+	name="Bubble Pack"
+	args={{
+		data: [
+			{ val: "", id: "Courts", parent: "" },
+			{ val: 5, id: "Jay", parent: "Courts" },
+			{ val: 34, id: "Marshall", parent: "Courts" },
+			{ val: 8, id: "Chase", parent: "Courts" },
+			{ val: 14, id: "Waite", parent: "Courts" },
+			{ val: 21, id: "Fuller", parent: "Courts" },
+			{ val: 10, id: "White", parent: "Courts" },
+			{ val: 8, id: "Taft", parent: "Courts" },
+			{ val: 11, id: "Hughes", parent: "Courts" },
+			{ val: 4, id: "Stone", parent: "Courts" },
+			{ val: 7, id: "Vinson", parent: "Courts" },
+			{ val: 15, id: "Warren", parent: "Courts" },
+			{ val: 17, id: "Burger", parent: "Courts" },
+			{ val: 18, id: "Rehnquist", parent: "Courts" },
+			{ val: 16, id: "Roberts", parent: "Courts" },
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Bubble Pack" />

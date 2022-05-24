@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./Graph.css";
 import { svg } from "../utils/svg/svg";
 import { Base } from "../base/Base";
 import { attrs } from "../utils/attrs/attrs";
@@ -9,22 +8,23 @@ import * as d3 from "d3";
 
 export const Graph = ({
 	data = [[]],
+	fontFamily="system-ui",
 	width = 500,
 	height = 500,
-	containerWidth = 90,
-	containerHeight = 90,
+	containerWidth = 95,
+	containerHeight = 95,
 	repulsion = 0.01,
-	edgeLength = 30,
+	edgeLength = 50,
 	collisionRadius = 10,
 	margins = [50, 50, 50, 50],
 	nodeRadius = 5,
-	edgeColor = "",
+	edgeColor = "#0080a7",
 	edgeWidth = "",
-	nodeFillColor = "",
-	nodeStrokeColor = "",
+	nodeFillColor = "#e3f7ca",
+	nodeStrokeColor = edgeColor,
 	nodeStrokeWidth = "",
 	nodeTextColor = "",
-	nodeTextFontSize = "",
+	nodeTextFontSize = "0.8rem",
 }) => {
 	const MatrixFigure = useRef();
 	const _svg = svg(width, height, margins);
@@ -81,6 +81,7 @@ export const Graph = ({
 
 		attrs(nodeTextOutline, {
 			class: "graph-node-text-outline",
+			"font-family": fontFamily,
 			"text-anchor": "middle",
 			dy: -11,
 			"stroke-width": "1px",
@@ -93,6 +94,7 @@ export const Graph = ({
 
 		attrs(nodeText, {
 			class: "graph-node-text",
+			"font-family": fontFamily,
 			"text-anchor": "middle",
 			fill: nodeTextColor,
 			dy: -11,

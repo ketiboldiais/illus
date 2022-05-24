@@ -1,0 +1,54 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { Bipartite } from "../components/Bipartite/Bipartite";
+
+<Meta
+	title="Bipartite Graphs"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={Bipartite}
+/>
+
+export const Template = (args) => <Bipartite {...args} />;
+
+# Bipartite Graphs
+
+Bipartite graphs are used in matching algorithms, the procedures behind
+exam scheduling, residency-matching for medical school graduates, and
+dating services. For example, here's CDemo's render of a bipartite graph
+visualizing who's dated who in the popular American TV show _Gossip Girl_:
+
+<Story
+	name="Bipartite Graphs"
+	args={{
+		data: [
+			{ link: ["Dan", "Blair"] },
+			{ link: ["Dan", "Serena"] },
+			{ link: ["Dan", "Vanessa"] },
+			{ link: ["Chuck", "Vanessa"] },
+			{ link: ["Chuck", "Jenny"] },
+			{ link: ["Chuck", "Blair"] },
+			{ link: ["Chuck", "Georgina"] },
+			{ link: ["Chuck", "Eva"] },
+			{ link: ["Nate", "Blair"] },
+			{ link: ["Nate", "Serena"] },
+			{ link: ["Nate", "Raina"] },
+			{ link: ["Nate", "Vanessa"] },
+			{ link: ["Nate", "Jenny"] },
+			{ link: ["Ben", "Serena"] },
+			{ link: ["Louis", "Blair"] },
+			{ link: ["Carter", "Serena"] },
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Bipartite Graphs" />

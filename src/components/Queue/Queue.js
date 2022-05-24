@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./Queue.css";
 import { isObjectLiteral } from "../utils/isObjectLiteral/isObjectLiteral";
 import { svg } from "../utils/svg/svg";
 import { Base } from "../base/Base";

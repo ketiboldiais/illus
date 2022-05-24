@@ -1,27 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import "./Spectrum.css";
-import { isObjectLiteral } from "../utils/isObjectLiteral/isObjectLiteral";
 import { svg } from "../utils/svg/svg";
-import { setValue } from "../utils/setValue/setValue";
 import { Base } from "../base/Base";
 import * as d3 from "d3";
-
-const formatData = (arr = []) => {
-	let data = [];
-	for (let i = 0; i < arr.length; i++) {
-		if (isObjectLiteral(arr[i])) {
-			data.push(arr[i]);
-		} else {
-			let datum = {
-				x: arr[i][0],
-				y: arr[i][1],
-				label: setValue(arr[i][2], ""),
-			};
-			data.push(datum);
-		}
-	}
-	return data;
-};
 
 export const Spectrum = ({
 	data = [],
@@ -29,7 +9,7 @@ export const Spectrum = ({
 	height = 150,
 	alternateBy = 1,
 	colors = ["#e0fffe", "#f9fffe"],
-	lineColor = 'grey',
+	lineColor = "grey",
 	spectrumHeight = 15,
 	textPadding = 1,
 	orient = "horizontal",
@@ -85,7 +65,7 @@ export const Spectrum = ({
 			.attr("class", "spectrum-rectangle-group");
 		rectGroup
 			.append("line")
-			.attr('stroke', lineColor)
+			.attr("stroke", lineColor)
 			.attr("x1", (d, i) => (d.val ? xScale(d.val) : xScale(i)))
 			.attr("y1", spectrumHeight)
 			.attr("x2", (d, i) => (d.val ? xScale(d.val) : xScale(i)))

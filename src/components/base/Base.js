@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "../_styles/base.css";
 import * as d3 from "d3";
 
 export const Base = ({
@@ -14,7 +13,7 @@ export const Base = ({
 	const figStyles = {
 		display: 'flex',
 		justifyContent: 'center',
-		flex: 1
+		flex: 1,
 	}
 	const svgStyles = {
 		display: "inline-block",

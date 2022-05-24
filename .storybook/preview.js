@@ -1,6 +1,6 @@
 import prettier from "prettier/standalone";
 import prettierBabel from "prettier/parser-babel";
-import theme from "./managerTheme";
+import previewTheme from "./previewTheme";
 
 export const parameters = {
 	actions: { argTypesRegex: "^on[A-Z].*" },
@@ -11,7 +11,7 @@ export const parameters = {
 		},
 	},
 	docs: {
-		theme: theme,
+		theme: previewTheme,
 		transformSource: (input) =>
 			prettier.format(input, {
 				parser: "babel",

@@ -1,0 +1,86 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { HexMap } from "../components/HexMap/HexMap";
+
+<Meta
+	title="Hex Maps"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={HexMap}
+/>
+
+export const Template = (args) => <HexMap {...args} />;
+
+# Hex Maps
+
+Illus renders bar plots with a matrix of arrays.
+
+<Story
+	name="Hex Maps"
+	args={{
+		data: [
+			{ state: "Alabama", class: "c" },
+			{ state: "Alaska", class: "pc" },
+			{ state: "Arizona", class: "pc" },
+			{ state: "Arkansas", class: "mc" },
+			{ state: "California", class: "pc" },
+			{ state: "Colorado", class: "mc" },
+			{ state: "Connecticut", class: "mc" },
+			{ state: "Delaware", class: "mc" },
+			{ state: "D.C.", class: "c" },
+			{ state: "Florida", class: "pc" },
+			{ state: "Georgia", class: "mc" },
+			{ state: "Hawaii", class: "mc" },
+			{ state: "Idaho", class: "mc" },
+			{ state: "Illinois", class: "mc" },
+			{ state: "Indiana", class: "mc" },
+			{ state: "Iowa", class: "mc" },
+			{ state: "Kansas", class: "mc" },
+			{ state: "Kentucky", class: "pc" },
+			{ state: "Louisiana", class: "pc" },
+			{ state: "Maine", class: "mc" },
+			{ state: "Maryland", class: "c" },
+			{ state: "Massachusetts", class: "mc" },
+			{ state: "Michigan", class: "mc" },
+			{ state: "Minnesota", class: "pc" },
+			{ state: "Mississippi", class: "pc" },
+			{ state: "Missouri", class: "pc" },
+			{ state: "Montana", class: "mc" },
+			{ state: "Nebraska", class: "mc" },
+			{ state: "Nevada", class: "mc" },
+			{ state: "New Hampshire", class: "mc" },
+			{ state: "New Jersey", class: "mc" },
+			{ state: "New Mexico", class: "pc" },
+			{ state: "New York", class: "pc" },
+			{ state: "North Carolina", class: "c" },
+			{ state: "North Dakota", class: "mc" },
+			{ state: "Ohio", class: "mc" },
+			{ state: "Oklahoma", class: "mc" },
+			{ state: "Oregon", class: "mc" },
+			{ state: "Pennsylvania", class: "mc" },
+			{ state: "Rhode Island", class: "pc" },
+			{ state: "South Carolina", class: "mc" },
+			{ state: "South Dakota", class: "sc" },
+			{ state: "Tennessee", class: "mc" },
+			{ state: "Texas", class: "mc" },
+			{ state: "Utah", class: "mc" },
+			{ state: "Vermont", class: "mc" },
+			{ state: "Virginia", class: "c" },
+			{ state: "Washington", class: "pc" },
+			{ state: "West Virginia", class: "mc" },
+			{ state: "Wisconsin", class: "mc" },
+			{ state: "Wyoming", class: "mc" },
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Hex Maps" />

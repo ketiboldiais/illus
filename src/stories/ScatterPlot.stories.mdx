@@ -1,0 +1,48 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { ScatterPlot } from "../components/ScatterPlot/ScatterPlot";
+
+<Meta
+	title="Scatter Plots"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={ScatterPlot}
+/>
+
+export const Template = (args) => <ScatterPlot {...args} />;
+
+# Scatter Plots
+
+A scatter plot is an easy way to visualize the relationship between two
+variables.
+
+<Story
+	name="Scatter Plots"
+	args={{
+		data: [
+			[0, 22],
+			[5, 47],
+			[10, 59],
+			[15, 54],
+			[20, 92],
+			[25, 104],
+			[30, 95],
+			[35, 91],
+			[40, 104],
+			[45, 117],
+			[50, 125],
+			[55, 119],
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+<ArgsTable story="Scatter Plots" />
