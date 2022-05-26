@@ -1,0 +1,30 @@
+import { Plot } from "../components/Plot/Plot";
+import { BinaryTree } from "../components/BinaryTree/BinaryTree";
+import { styled } from "@storybook/theming";
+import "katex/dist/katex.min.css";
+import "./styles.css";
+import { InlineMath } from "react-katex";
+
+<SampleDoc className="sample-doc">
+
+## Rational Functions
+
+The simplest example is the rational function <InlineMath math="f(x) = \dfrac{1}{x}" />, defined on all but zero of <InlineMath math="\mathbb{R}" />:
+
+<Plot functions={[{ f: (x) => 1 / x }]} />
+
+Now consider the tree:
+
+<BinaryTree
+	data={[
+		[1, [2, 3]],
+		[2, [4, 5]],
+		[3, [7, 8]],
+		[4, [11, 17]],
+		[5, [22, null]],
+		[11, [32, 28]],
+		[17, [19, null]],
+	]}
+/>
+
+</SampleDoc>

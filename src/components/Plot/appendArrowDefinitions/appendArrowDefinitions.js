@@ -2,22 +2,22 @@ import { insertArrowDefinitions } from "../../utils/insertArrowDefinitions/inser
 
 const x_arrow_left = {
 	id: "xArrowLeft",
-	orient: "auto",
+	orient: "0",
 };
 
 const x_arrow_right = {
 	id: "xArrowRight",
-	orient: "0",
+	orient: "180",
 };
 
 const y_arrow_top = {
 	id: "yArrowTop",
-	orient: "90",
+	orient: "-90",
 };
 
 const y_arrow_bottom = {
 	id: "yArrowBottom",
-	orient: "-90",
+	orient: "90",
 };
 
 const defs = [x_arrow_left, x_arrow_right, y_arrow_top, y_arrow_bottom];

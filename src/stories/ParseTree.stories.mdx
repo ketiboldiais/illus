@@ -1,0 +1,41 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+} from "@storybook/addon-docs/blocks";
+import { ParseTree } from "../components/ParseTree/ParseTree";
+
+<Meta
+	title="Parse Trees"
+	parameters={{
+		viewMode: "docs",
+		previewTabs: {
+			canvas: { hidden: true },
+		},
+	}}
+	component={ParseTree}
+/>
+
+export const Template = (args) => <ParseTree {...args} />;
+
+# Parse Trees
+
+The `ParseTree` module arose from a need to generate visualizations for
+abstract syntax trees quickly. Curved paths are used to aid readability.
+
+<Story
+	name="Parse Trees"
+	args={{
+		data: [[`+`], [`+`, 10, `*`], ["*", 2, "%"], [`%`, 4, 5]],
+	}}>
+	{Template.bind({})}
+</Story>
+
+The tree above is rendered with the following code:
+
+```javascript
+<ParseTree data={[[`+`], [`+`, 10, `*`], ["*", 2, "%"], [`%`, 4, 5]]} />
+```
+
+<ArgsTable story="Parse Trees" />

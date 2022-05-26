@@ -1,0 +1,29 @@
+@font-face {
+	font-family: "Old Standard TT";
+	src: url("https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap");
+}
+.sample-doc {
+	border: solid thin lightgrey;
+	padding: 2em;
+	padding-bottom: 10em;
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+}
+.sample-doc p,
+.sample-doc h2,
+.sample-doc g.plot text {
+	font-family: "Old Standard TT";
+}
+.sample-doc g.binary-tree circle {
+	fill: white;
+}
+.sample-doc g.binary-tree text {
+	fill: black;
+	font-family: "Old Standard TT";
+}
+.sample-doc p {
+	font-size: 1em;
+}
+.katex {
+	font-size: 1em;
+}
+

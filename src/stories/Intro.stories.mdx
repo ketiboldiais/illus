@@ -6,6 +6,9 @@ import {
 } from "@storybook/addon-docs/blocks";
 
 import { Plot } from "../components/Plot/Plot";
+import { BinaryTree } from "../components/BinaryTree/BinaryTree";
+import SampleDoc from "./SampleDoc.mdx";
+import SampleDocRaw from "./SampleDocRaw.mdx";
 
 <Meta
 	title="Introduction"
@@ -19,15 +22,26 @@ import { Plot } from "../components/Plot/Plot";
 
 # Illus
 
-`Illus` (short for "Illustration") is a component library for rendering
-math- and computer science-related diagrams. Illus grew out of a need to
-quickly create diagrams during lectures and seminars. With the advent of
-tools like NextJS, MDX, and KaTeX, attendees can write:
+`Illus` (short for "Illustration") is a React component library for
+rendering math- and computer science-related diagrams. `Illus` grew out of
+a need to quickly create diagrams during lectures and seminars. Admittedly,
+there's a strong correlation between taking notes by hand and a deeper
+retention, or understanding, of the material. Although, there's also
+evidence supporting not taking notes at all, but let's not go there.
 
-```md
-<Plot functions={[ { f: (x) => Math.sin(x) }, ]}/>
-```
+Debate aside, we generally don't like reading other people's notes. One
+colleague redefines pain via handwriting, the other the English language
+via abbreviation. Worse, rewriting those notes with LaTeX or some other
+software-of-choice can be a painstaking process. We rewrite our notes in
+some text editor. If we encounter a graph, we might move to Python, Matlab,
+or Mathematica. Diagram of a linked list, flowchart, or tree? Perhaps
+Inkscape. All of this movement between different tools deviates from what
+we really just want to do—produce a more polished version of our materials.
 
-to render:
+The idea behind `Illus` is, we want to write something like this:
 
-<Plot functions={[{ f: (x) => Math.sin(x) }]} />
+<SampleDocRaw />
+
+to render this:
+
+<SampleDoc />

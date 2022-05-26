@@ -1,0 +1,28 @@
+import "./styles.css";
+
+<SampleDocRaw className="sample-doc-raw">
+
+```
+## Rational Functions
+
+The simplest example is the rational function $f(x) = 1/x$, defined on all
+but zero of $\R$:
+
+<Plot functions={[ { f: (x) => 1/x }, ]}/>
+
+Now consider the tree:
+
+<BinaryTree
+	data={[
+		[1, [2, 3]],
+		[2, [4, 5]],
+		[3, [7, 8]],
+		[4, [11, 17]],
+		[5, [22, null]],
+		[11, [32, 28]],
+		[17, [19, null]],
+	]}
+/>
+```
+
+</SampleDocRaw>

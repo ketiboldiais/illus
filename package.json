@@ -2,11 +2,18 @@
   "name": "illus",
   "version": "1.0.3",
   "description": "A React component library for rendering math and CS diagrams.",
-  "keywords": ["diagrams", "function plot", "schematics", "graphics"],
+  "keywords": [
+    "diagrams",
+    "function plot",
+    "schematics",
+    "graphics"
+  ],
   "homepage": "https://ketiboldiais.github.io/illus/",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "start-storybook -p 6006",
@@ -46,6 +53,7 @@
     "prettier": "^2.6.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-katex": "^2.0.2",
     "rollup": "^2.74.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",

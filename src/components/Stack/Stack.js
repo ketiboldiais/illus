@@ -24,10 +24,11 @@ export const Stack = ({
 	data = [],
 	width = 350,
 	height = 170,
+	fontFamily="system-ui",
 	frameWidth = 70,
 	frameHeight = 20,
-	containerWidth = 50,
-	containerHeight = 25,
+	containerWidth = 100,
+	containerHeight = 45,
 	margins = [10, 10, 10, 10],
 }) => {
 	const stackFigure = useRef();
@@ -63,6 +64,7 @@ export const Stack = ({
 			.attr("width", frameWidth);
 		const frameText = frameGroup
 			.append("text")
+			.attr('font-family', fontFamily)
 			.attr("class", "stack-frame-text")
 			.attr("text-anchor", "middle")
 			.attr("x", (d) => setConditionalValue(d.popped, frameWidth, 0))

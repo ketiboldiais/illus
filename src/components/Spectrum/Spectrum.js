@@ -9,12 +9,14 @@ export const Spectrum = ({
 	height = 150,
 	alternateBy = 1,
 	colors = ["#e0fffe", "#f9fffe"],
+	fontFamily="system-ui",
+	fontSize=12,
 	lineColor = "grey",
 	spectrumHeight = 15,
 	textPadding = 1,
 	orient = "horizontal",
-	containerWidth = 90,
-	containerHeight = 30,
+	containerWidth = 100,
+	containerHeight = 35,
 	margins = [50, 50, 50, 50],
 }) => {
 	const SpectrumFigure = useRef();
@@ -78,6 +80,8 @@ export const Spectrum = ({
 			});
 		rectGroup
 			.append("text")
+			.attr('font-family', fontFamily)
+			.attr('font-size', fontSize)
 			.attr("class", "spectrum-label")
 			.attr("text-anchor", "middle")
 			.attr("x", (d, i) => (d.val ? xScale(d.val) : xScale(i)))

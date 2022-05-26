@@ -10,54 +10,58 @@ import { translate } from "../utils/translate/translate";
 
 export const Plot = ({
 	functions = [],
-	precision = 100,
 	domain = [-10, 10],
 	range = [-10, 10],
-	xAxisPosition = "center",
-	xAxisColor = "",
-	yAxisColor = "",
-	yAxisPosition = "center",
-	plotLineColor = "firebrick",
+	samples=500,
+	width = 400,
+	height = 400,
+	containerWidth = 100,
+	containerHeight = 100,
+	fontFamily = "system-ui",
+	fontSize = 11,
+	axesColor = "#606060",
+	plotLineColor = "tomato",
 	strokeWidth = 2,
-	width = 500,
-	height = 500,
-	containerWidth = 90,
-	containerHeight = 90,
 	margins = [50, 50, 50, 50],
 }) => {
 	const PlotFigure = useRef();
 	const _svg = svg(width, height, margins);
-	const plotLineColors = getPropertyValues(functions, "color");
 	const userFunctions = getPropertyValues(functions, "f");
-	const _domain = d3.ticks(domain[0], domain[1], precision);
-	const _domainUpperBound = domain[0];
-	const _domainLowerBound = domain[1];
-	const _rangeUpperBound = range[0];
-	const _rangeLowerBound = range[1];
+	const _domainLowerBound = domain[0];
+	const _domainUpperBound = domain[1];
+	const _rangeLowerBound = range[0];
+	const _rangeUpperBound = range[1];
 
 	const xScale = d3.scaleLinear(
 		[_domainLowerBound, _domainUpperBound],
-		[_svg.width, 0],
+		[0, _svg.width],
 	);
 
 	const yScale = d3.scaleLinear(
 		[_rangeLowerBound, _rangeUpperBound],
-		[0, _svg.height],
+		[_svg.height, 0],
 	);
 
 	const funcGroupData = generateFunctionData(
 		functions,
 		userFunctions,
-		_domain,
+		samples,
+		_domainUpperBound,
+		_domainLowerBound,
+		_rangeUpperBound,
+		_rangeLowerBound
 	);
 	const generate_d_attribute = (d) => {
 		return d3
 			.line()
-			.x((d) => {
-				return xScale(d.x);
-			})
 			.y((d) => {
 				return yScale(d.y);
+			})
+			.defined(function (d) {
+				return d.y !== null;
+			})
+			.x((d) => {
+				return xScale(d.x);
 			});
 	};
 	const xAxis = d3.axisBottom(xScale).tickSizeInner(3).tickSizeOuter(0);
@@ -68,7 +72,7 @@ export const Plot = ({
 
 		const plot = canvas.append("g").attr("class", "plot");
 
-		appendArrowDefinitions(plot, "black");
+		appendArrowDefinitions(plot, axesColor);
 
 		const render_xAxis = plot
 			.append("g")
@@ -77,10 +81,15 @@ export const Plot = ({
 			.call(xAxis);
 
 		// elongate x-axis ticks
-		render_xAxis.selectAll(".tick").selectAll("line").attr("y1", -3);
+		render_xAxis
+			.selectAll(".tick")
+			.selectAll("line")
+			.attr("y1", -3)
+			.attr("stroke", axesColor);
 		// add x-axis arrow heads
 		render_xAxis
 			.select("path")
+			.attr("stroke", axesColor)
 			.attr("marker-end", "url(#xArrowLeft)")
 			.attr("marker-start", "url(#xArrowRight)");
 
@@ -91,14 +100,25 @@ export const Plot = ({
 			.call(yAxis);
 
 		// elongate y-axis ticks
-		render_yAxis.selectAll(".tick").selectAll("line").attr("x1", 3);
+		render_yAxis
+			.selectAll(".tick")
+			.selectAll("line")
+			.attr("x1", 3)
+			.attr("stroke", axesColor);
 		// add y-axis arrow heads
 		render_yAxis
 			.select("path")
+			.attr("stroke", axesColor)
 			.attr("marker-end", "url(#yArrowTop)")
 			.attr("marker-start", "url(#yArrowBottom)");
 
 		removeEndTicks(plot);
+
+		plot
+			.selectAll("text")
+			.attr("font-family", fontFamily)
+			.attr('font-size', fontSize)
+			.attr("fill", axesColor);
 
 		const plotBoundary = plot
 			.append("clipPath")
@@ -112,6 +132,7 @@ export const Plot = ({
 			plot
 				.append("path")
 				.datum(funcGroupData[i].data)
+				// .attr('foo', d => console.log(d))
 				.attr("shape-rendering", "geometric-precision")
 				.attr("clip-path", "url(#chart-area)")
 				.attr("fill", "none")

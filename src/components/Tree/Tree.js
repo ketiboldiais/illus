@@ -15,41 +15,35 @@ import { calculateTreeSize } from "./calculateTreeSize/calculateTreeSize";
 
 export const Tree = ({
 	data = [],
-	width = 300,
-	height = 150,
-	narrow = 30,
-	containerWidth = 70,
-	containerHeight = 50,
+	width = 250,
+	height = 140,
+	narrow = 10,
+	containerWidth = 100,
+	containerHeight = 60,
 	margins = [20, 20 + narrow, 20, 20 + narrow],
+	fontFamily = "system-ui",
 	edgeLength = null,
 	isDirected = false,
 	nodeRadius = 7,
-	nodeTextColor = "black",
-	nodeStrokeColor = "black",
-	leafTextColor = "black",
-	leafStrokeColor = "black",
-	nodeFocusFillColor = "tomato",
-	nodeFocusTextColor = "white",
-	nodeFocusStrokeColor = "firebrick",
+	nodeColor = "#ffffff",
+	edgeColor = "#000000",
+	nodeTextColor = edgeColor,
+	nodeStrokeColor = edgeColor,
 	markBalanceFactor = false,
 	markHeight = false,
 	markDepth = false,
 	markLevels = false,
-	nodeTextFontSize = "",
-	subtreeTextColor = "",
-	balancedTextColor = "forestgreen",
-	imbalancedTextColor = "firebrick",
-	nodeLeafColor = "white",
-	nodeBranchColor = "white",
-	edgeColor = "black",
-	edgeThickness = "1",
-	heightFontSize = "0.6rem",
-	heightTextColor = "black",
+	nodeTextFontSize = 8,
+	balancedTextColor = edgeColor,
+	imbalancedTextColor = edgeColor,
+	edgeThickness = 1,
+	heightFontSize = 7,
+	heightTextColor = edgeColor,
 	hideNodeCircles = false,
-	balanceFactorFontSize = "0.6rem",
+	balanceFactorFontSize = 7,
 	levelLineColor = "grey",
 	levelTextColor = "grey",
-	levelFontSize = "0.6rem",
+	levelFontSize = 7,
 }) => {
 	const TreeFigure = useRef();
 	const _svg = svg(width, height, margins);
@@ -85,9 +79,9 @@ export const Tree = ({
 			.selectAll("line")
 			.data(root.links())
 			.enter()
-			.append("line")
+			.append("line");
 		attrs(linkLines, {
-			class: 'tree-edge',
+			class: "tree-edge",
 			display: (d) =>
 				d.source.data.display || d.target.data.display
 					? "none"
@@ -107,50 +101,28 @@ export const Tree = ({
 			.data(root.descendants())
 			.enter()
 			.append("g")
-			.attr("class", "tree-nodes");
+			.attr("class", (d) => {
+				if (d.data.focus) {
+					return d.height === 0
+						? `tree-node tree-node-${d.data.focus} tree-node-leaf`
+						: `tree-node tree-node-${d.data.focus} tree-node-branch`;
+				} else {
+					return d.height === 0
+						? "node-circle tree-node-leaf"
+						: "node-circle tree-node-branch";
+				}
+			});
 
 		const nodeCircles = nodes
 			.filter((d) => !d.data.display)
 			.filter((d) => !d.data.noCircle)
 			.filter((d) => !d.data.type)
-			.append("circle");
-		attrs(nodeCircles, {
-			class: (d) => {
-				if (d.data.focus) {
-					return d.height === 0
-						? "node-circle node-circle-focused node-circle-leaf"
-						: "node-circle node-circle-focused node-circle-branch";
-				} else {
-					return d.height === 0
-						? "node-circle node-circle-leaf"
-						: "node-circle node-circle-branch";
-				}
-			},
-			cx: (d) => d.x,
-			cy: (d) => d.y,
-			r: nodeRadius,
-
-			stroke: (d) => {
-				if (hideNodeCircles) {
-					return "none";
-				} else if (d.data.focus) {
-					return nodeFocusStrokeColor;
-				} else {
-					return d.height === 0 ? leafStrokeColor : nodeStrokeColor;
-				}
-			},
-
-			fill: (d) => {
-				if (hideNodeCircles) {
-					return "inherit";
-				} else if (d.data.focus) {
-					return nodeFocusFillColor;
-				} else {
-					return d.height === 0 ? nodeLeafColor : nodeBranchColor;
-				}
-			},
-		});
-
+			.append("circle")
+			.attr("fill", hideNodeCircles ? "inherit" : nodeColor)
+			.attr("r", nodeRadius)
+			.attr("cx", (d) => d.x)
+			.attr("cy", (d) => d.y)
+			.attr("stroke", hideNodeCircles ? "none" : nodeStrokeColor);
 		const nodeLabels = tree.append("g").attr("class", "node-text");
 		const dataField = nodeLabels
 			.selectAll("dataFieldLabels")
@@ -159,7 +131,10 @@ export const Tree = ({
 			.filter((d) => !d.data.display)
 			.filter((d) => !d.data.label)
 			.append("text")
-			.text((d) => d.id);
+			.text((d) => d.id)
+			.attr("font-family", fontFamily)
+			.attr("font-size", nodeTextFontSize);
+
 		attrs(dataField, {
 			class: (d) => {
 				if (d.data.focus) {
@@ -185,18 +160,7 @@ export const Tree = ({
 			dy: "0.3em",
 			opacity: (d) => setValue(d.data.opacity, 1),
 			"text-anchor": "middle",
-			fill: (d) => {
-				if (isNotUndefined(d.data.focus)) {
-					return nodeFocusTextColor;
-				} else if (
-					isNotUndefined(d.data.type) &&
-					d.data.type === "subtree"
-				) {
-					return subtreeTextColor;
-				} else {
-					return d.children ? nodeTextColor : leafTextColor;
-				}
-			},
+			fill: nodeTextColor,
 			"font-size": nodeTextFontSize,
 		});
 		if (markLevels)
