@@ -33,8 +33,8 @@ export const CircularList = ({
 	indexFieldTextColor= "black",
 	indexFieldFontSize= "0.5rem",
 	strokeColor = "black",
-	containerWidth = 80,
-	containerHeight = 25,
+	containerWidth,
+	containerHeight,
 	margins = [20, 25, 20, 20],
 	isIndexed = true,
 }) => {

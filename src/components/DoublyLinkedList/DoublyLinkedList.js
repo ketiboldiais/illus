@@ -25,7 +25,8 @@ export const DoublyLinkedList = ({
 	listName = "root",
 	width = 240,
 	height = 40,
-	containerWidth = 80,
+	containerWidth,
+	containerHeight,
 	fontSize=8,
 	fontColor="#000000",
 
@@ -55,7 +56,6 @@ export const DoublyLinkedList = ({
 	
 	indexFontSize=fontSize-2,
 	indexFontColor=fontColor,
-	containerHeight = 15,
 	margins = [15, 30, 10, 30],
 	isIndexed = true,
 }) => {

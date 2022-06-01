@@ -37,8 +37,8 @@ export const ScatterPlot = ({
 	yAxisLabel = "y",
 	width = 500,
 	height = 500,
-	containerWidth = 80,
-	containerHeight = 100,
+	containerWidth,
+	containerHeight,
 	margins = [40, 40, 40, 40],
 }) => {
 	const scatterPlotFigure = useRef();

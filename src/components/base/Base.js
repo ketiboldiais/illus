@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "../_styles/base.css";
 import * as d3 from "d3";
 
 export const Base = ({
@@ -7,7 +6,7 @@ export const Base = ({
 	width = 200,
 	height = 200,
 	containerWidth = 100,
-	containerHeight = 100,
+	containerHeight = height/width,
 	backgroundColor = "inherit",
 	margins = [10, 10, 10, 10], // [top, right, bottom, left]
 }) => {
@@ -16,6 +15,14 @@ export const Base = ({
 		display: 'flex',
 		justifyContent: 'center',
 	}
+		const containerStyles = {
+		display: "inline-block",
+		position: "relative",
+		width: `${containerWidth}%`,
+		paddingBottom: `${containerWidth * containerHeight}%`,
+		backgroundColor: "inherit",
+		overflow: "hidden",
+	};
 	const svgStyles = {
 		display: "inline-block",
 		position: "absolute",
@@ -23,14 +30,7 @@ export const Base = ({
 		left: 0,
 		backgroundColor: backgroundColor,
 	};
-	const containerStyles = {
-		display: "inline-block",
-		position: "relative",
-		width: `${containerWidth}%`,
-		paddingBottom: `${containerHeight}%`,
-		backgroundColor: "inherit",
-		overflow: "hidden",
-	};
+	
 	const marginTop = margins[0];
 	const marginRight = margins[1];
 	const marginBottom = margins[2];
@@ -57,10 +57,10 @@ export const Base = ({
 		appendSvg();
 	});
 	return (
-		<figure className="illus-figure" style={figStyles}>
+		
 			<div ref={id} className="svgContainer" style={containerStyles}>
 				<svg ref={svgRef} style={svgStyles} className="illus"></svg>
 			</div>
-		</figure>
+		
 	);
 };

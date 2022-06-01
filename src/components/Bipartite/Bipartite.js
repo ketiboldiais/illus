@@ -323,14 +323,14 @@ export const Bipartite = ({
 	data = [[], [], []],
 	width = 300,
 	height = 300,
-	containerWidth = 60,
-	containerHeight = 60,
+	containerWidth,
+	containerHeight,
 	margins = [30, 30, 30, 30],
-	fontFamily="system-ui",
-	edgeColor="teal",
+	fontFamily = "sans-serif",
+	edgeColor = "black",
 	nodeStrokeWidth = 1,
-	nodeStrokeColor="teal",
-	nodeFillColor="#e5fff9",
+	nodeStrokeColor = edgeColor,
+	nodeFillColor = "white",
 	nodeRadius = 5,
 	nodeTextColor,
 	nodePadding = null,
@@ -387,7 +387,7 @@ export const Bipartite = ({
 			.data(edges)
 			.enter()
 			.append("g")
-			.attr('class', 'bipartite-edge')
+			.attr("class", "bipartite-edge");
 		link.append("path");
 		attrs(link.selectAll("path"), {
 			class: "bipartite-edge-path",
@@ -412,14 +412,13 @@ export const Bipartite = ({
 			fill: nodeFillColor,
 			r: nodeRadius,
 		});
-		node.append("text").text((d) => d.name);
-		attrs(node.selectAll("text"), {
-			"font-family": fontFamily,
-			class: "bipartite-node-text",
-			fill: nodeTextColor,
-			dy: -nodeRadius * 2,
-			"text-anchor": "middle",
-		});
+		node
+			.append("text")
+			.text((d) => d.name)
+			.attr("font-family", fontFamily)
+			.attr("fill", nodeTextColor)
+			.attr("dy", -nodeRadius * 2)
+			.attr("text-anchor", "middle");
 	});
 	return (
 		<Base

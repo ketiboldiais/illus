@@ -5,19 +5,19 @@ import * as d3 from "d3";
 
 export const Spectrum = ({
 	data = [],
-	width = 500,
+	width = 300,
 	height = 150,
+	containerWidth,
+	containerHeight,
 	alternateBy = 1,
 	colors = ["#e0fffe", "#f9fffe"],
-	fontFamily="system-ui",
-	fontSize=12,
+	fontFamily = "system-ui",
+	fontSize = 10,
 	lineColor = "grey",
 	spectrumHeight = 15,
-	textPadding = 1,
+	textPadding = 2,
 	orient = "horizontal",
-	containerWidth = 100,
-	containerHeight = 35,
-	margins = [50, 50, 50, 50],
+	margins = [10, 10, 10, 10],
 }) => {
 	const SpectrumFigure = useRef();
 	const colorStopX1 = 0;
@@ -80,8 +80,8 @@ export const Spectrum = ({
 			});
 		rectGroup
 			.append("text")
-			.attr('font-family', fontFamily)
-			.attr('font-size', fontSize)
+			.attr("font-family", fontFamily)
+			.attr("font-size", fontSize)
 			.attr("class", "spectrum-label")
 			.attr("text-anchor", "middle")
 			.attr("x", (d, i) => (d.val ? xScale(d.val) : xScale(i)))

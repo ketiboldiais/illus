@@ -26,12 +26,269 @@ Illus can plot some simple functions:
 <Story
 	name="2D Plot"
 	args={{
-		functions:[
+		functions: [
 			{ f: (x) => Math.sin(x), color: "#68b700" },
 			{ f: (x) => -Math.sin(x), color: "#AD62AA" },
 			{ f: (x) => Math.cos(x), color: "#E94560" },
 			{ f: (x) => -Math.cos(x), color: "#29C7AC" },
-		]
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+## Functions
+
+Functions are plotted by passing an array function objects to the
+`functions` parameter.
+
+<Story
+	name="Functions"
+	args={{
+		functions: [{ f: (x) => 1 / x ** 2, color: "#68b700" }],
+	}}>
+	{Template.bind({})}
+</Story>
+
+### Labels
+
+Labels can be rendered on the `plot` by passing an object with its `type`
+property set to `label`, alongside a position property (set in `xy`). For
+example, writing:
+
+```jsx
+<Plot
+	functions={[{ f: (x) => 1 / x ** 2, color: "#68b700" }]}
+	geo={[
+		{
+			type: "label",
+			id: "f(x) = \\dfrac{1}{x^2}",
+			xy: [3, 6],
+		},
+	]}
+/>
+```
+
+renders:
+
+<Story
+	name="Labels"
+	args={{
+		functions: [{ f: (x) => 1 / x ** 2, color: "#68b700" }],
+		geo: [{ type: "label", id: "f(x) = \\dfrac{1}{x^2}", xy: [3, 6] }],
+	}}>
+	{Template.bind({})}
+</Story>
+
+Labels are rendered with KaTeX. Accordingly, LaTeX syntax can be used, but
+because the label content (set in the `id` attribute) is passed as a
+JavaScript string, the backslash commonly used in LaTeX must be escaped.
+
+## Geometries
+
+The `Plot` module can also render shapes by passing arguments to the `geo`
+array.
+
+### Circles
+
+Circles can be rendered through the `Plot` module by passing an object with
+the `type` property set to `circle`. For example, writing:
+
+```jsx
+<Plot geo={[{ type: "circle", xy: [0, 0], r: 3, markCenter: true }]} />
+```
+
+renders:
+
+<Story
+	name="Circles"
+	args={{
+		geo: [{ type: "circle", xy: [0, 0], r: 3, markCenter: true }],
+	}}>
+	{Template.bind({})}
+</Story>
+
+### Rectangles
+
+Rectangles can be rendered through the `Plot` module by passing an object
+with the `type` property set to `rectangle`, alongside a width, height, and
+position property. For example, writing:
+
+```jsx
+<Plot
+	geo={[
+		{
+			type: "rectangle",
+			xy: [0, 0],
+			w: 10,
+			h: 3,
+			markCenter: true,
+		},
+	]}
+/>
+```
+
+renders a rectangle with a width of 10, a height of 3, centred at the
+position (0,0):
+
+<Story
+	name="Rectangles"
+	args={{
+		geo: [
+			{
+				type: "rectangle",
+				xy: [0, 0],
+				w: 10,
+				h: 3,
+				id: "rect1",
+				markCenter: true,
+			},
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+### Points
+
+Single points are rendered through the `Plot` module by passing an object
+with the `type` property set to `point`. For example, writing:
+
+```jsx
+<Plot
+	geo={[
+		{ type: "point", xy: [5, 1], id: "point1" },
+		{ type: "point", xy: [7, 1], id: "point2" },
+		{ type: "point", xy: [8, 4], id: "point3" },
+		{ type: "point", xy: [-2, 3], id: "point3" },
+	]}
+/>
+```
+
+renders the points (5,1), (7,1), (8,4), and (-2,3):
+
+<Story
+	name="Points"
+	args={{
+		geo: [
+			{ type: "point", xy: [5, 1], id: "point1" },
+			{ type: "point", xy: [7, 1], id: "point2" },
+			{ type: "point", xy: [8, 4], id: "point3" },
+			{ type: "point", xy: [-2, 3], id: "point3" },
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+### Line Segments
+
+Line segments are rendered by passing an object with the `type` property
+set to `segment`. For example, writing:
+
+```jsx
+<Plot
+	geo={[{
+		type: "segment",
+		start: [1, 8],
+		end: [1, 2],
+		id: "line-segment1"
+	}]},
+/>
+```
+
+renders a line segment running from (1,8) to (1,2):
+
+<Story
+	name="Line Segments"
+	args={{
+		geo: [{ type: "segment", start: [1, 8], end: [1, 2], id: "x" }],
+	}}>
+	{Template.bind({})}
+</Story>
+
+### Lines
+
+Lines are rendered by passing object with the `type` property set `line`:
+
+<Story
+	name="Lines"
+	args={{
+		geo: [{ type: "line", start: [-10, 8], end: [-2, 2], id: "x" }],
+	}}>
+	{Template.bind({})}
+</Story>
+
+### Rays
+
+Rays are rendered by passing an object with the `type` property set to
+`ray`:
+
+<Story
+	name="Rays"
+	args={{
+		geo: [{ type: "ray", start: [-9, -2], end: [-4, -7], id: "x" }],
+	}}>
+	{Template.bind({})}
+</Story>
+
+### Angles
+
+Angles are rendered by passing an object with the `type` property set to
+`angle`:
+
+<Story
+	name="Angles"
+	args={{
+		geo: [
+			{
+				type: "angle",
+				xy: [5, 5],
+				angle: 45,
+				arms: [3, 3],
+				id: "y",
+				label: { type: "degrees", xy: [8, 6.5] },
+			},
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+#### Angle Labels
+
+Angles can be labeled by setting the `label` property in the `angle`
+object. By default, the label is rendered in degrees:
+
+<Story
+	name="Angle Labels"
+	args={{
+		geo: [
+			{
+				type: "angle",
+				xy: [5, 5],
+				angle: 45,
+				arms: [3, 3],
+				id: "angle3",
+				label: { xy: [8, 6.5] },
+			},
+		],
+	}}>
+	{Template.bind({})}
+</Story>
+
+To render the label in radians, set the `label` object's `type` property to
+`radians`.
+
+<Story
+	name="Angle Label in Radians"
+	args={{
+		geo: [
+			{
+				type: "angle",
+				xy: [5, 5],
+				angle: 45,
+				arms: [3, 3],
+				id: "angle2",
+				label: { type: `radians`, xy: [8.3, 6.8] },
+			},
+		],
 	}}>
 	{Template.bind({})}
 </Story>

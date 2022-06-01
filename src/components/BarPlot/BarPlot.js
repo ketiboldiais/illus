@@ -43,9 +43,9 @@ export const BarPlot = ({
 	xAxisLabel = "x",
 	yAxisLabel = "y",
 	width = 500,
-	height = 400,
-	containerWidth = 80,
-	containerHeight = 70,
+	height = 450,
+	containerWidth,
+	containerHeight,
 	margins = [70, 70, 70, 70],
 }) => {
 	const BarPlotFigure = useRef();

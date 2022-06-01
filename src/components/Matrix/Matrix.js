@@ -28,8 +28,8 @@ export const Matrix = ({
 	focus,
 	width = 300,
 	height = 300,
-	containerWidth = 60,
-	containerHeight = 60,
+	containerWidth,
+	containerHeight,
 	margins = [60, 30, 60, 30],
 	isIndexed = true,
 }) => {

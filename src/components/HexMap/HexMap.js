@@ -14,8 +14,8 @@ export const HexMap = ({
 	textColor = "white",
 	strokeColor = "firebrick",
 	fillColor = "tomato",
-	containerWidth = 100,
-	containerHeight = 100,
+	containerWidth,
+	containerHeight,
 	margins = [10, 10, 10, 10],
 }) => {
 	const _hexmapREF = useRef(null);
@@ -23,7 +23,7 @@ export const HexMap = ({
 	const stateNames = getPropertyValues(data, "state");
 	console.log(stateNames);
 
-	const projection = d3.geoMercator().scale(350).translate([850, 440]);
+	const projection = d3.geoMercator().scale(350).translate([845, 430]);
 	const path = d3.geoPath().projection(projection);
 
 	const render = () => {

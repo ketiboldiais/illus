@@ -27,8 +27,8 @@ export const Stack = ({
 	fontFamily="system-ui",
 	frameWidth = 70,
 	frameHeight = 20,
-	containerWidth = 100,
-	containerHeight = 45,
+	containerWidth,
+	containerHeight,
 	margins = [10, 10, 10, 10],
 }) => {
 	const stackFigure = useRef();

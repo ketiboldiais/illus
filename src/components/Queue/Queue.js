@@ -22,8 +22,8 @@ export const Queue = ({
 	data = [],
 	width = 300,
 	height = 300,
-	containerWidth = 45,
-	containerHeight = 15,
+	containerWidth,
+	containerHeight = 0.5,
 	margins = [20, 20, 20, 20],
 }) => {
 	const queueFigure = useRef();

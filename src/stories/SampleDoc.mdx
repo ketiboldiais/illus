@@ -3,13 +3,13 @@ import { BinaryTree } from "../components/BinaryTree/BinaryTree";
 import { styled } from "@storybook/theming";
 import "katex/dist/katex.min.css";
 import "./styles.css";
-import { InlineMath } from "react-katex";
+import TeX from '@matejmazur/react-katex'
 
 <SampleDoc className="sample-doc">
 
 ## Rational Functions
 
-The simplest example is the rational function <InlineMath math="f(x) = \dfrac{1}{x}" />, defined on all but zero of <InlineMath math="\mathbb{R}" />:
+The simplest example is the rational function <TeX math="f(x) = \dfrac{1}{x}" />, defined on all but zero of <TeX math="\mathbb{R}" />:
 
 <Plot functions={[{ f: (x) => 1 / x }]} />
 

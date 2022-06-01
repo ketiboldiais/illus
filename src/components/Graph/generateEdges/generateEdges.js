@@ -10,7 +10,7 @@ export const generateEdges = (data) => {
 			for (let k = 0; k < setLength; k++) {
 				let current = data[i].link[k];
 				let next = data[i].link[(k + 1) % setLength];
-				edge = { source: next, target: current };
+				edge = { source: next, target: current, ...datum};
 			}
 			edges.push(edge);
 		} else {

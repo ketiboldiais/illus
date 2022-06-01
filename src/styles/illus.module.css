@@ -1,0 +1,71 @@
+/* Global Class */
+.illus {}
+
+/* Bar Plot Classes */
+.bar-plot {} 
+.user {} /* user defined */
+.bar-plot-y-axis-line {}
+.bar-plot-y-axis-text {}
+.bar-plot-x-axis-line {}
+.bar-plot-x-axis-text {}
+.bar-plot-bar {}
+.bar-plot-bar-groupName {}
+
+/* Binary Tree Classes */
+.binary-tree {}
+.user {} /* user defined */
+.binary-tree-node {}
+.binary-tree-edge {}
+.binary-tree-node-root {}
+.binary-tree-node-leaf {}
+.binary-tree-node-branch {}
+.binary-tree-height-marker {}
+.binary-tree-depth-marker {}
+.binary-tree-level-marker {}
+.binary-tree-node-className {} /* user defined */
+.binary-tree-edge-className {} /* user defined */
+
+
+/* Bipartite Graph Classes */
+.bipartite {}
+.user {} /* user defined */
+.bipartite-node {}
+.bipartite-node-user {} /* user defined */
+.bipartite-edge {}
+.bipartite-edge-user {} /* user defined */
+.bipartite-node-user {} /* user defined */
+
+/* Bubble Pack Classes */
+.bubblepack {}
+.bubblepack-level-depthNumber {}
+
+/* Circular List */
+.CircularList {}
+.user {} /* user defined */
+
+.CircularList-root {}
+.CircularList-node {}
+.CircularList-node-user {} /* user defined */
+.CircularList-node-index {} /* generated */
+.CircularList-edge {}
+.CircularList-edge-index {} /* generated */
+
+.circularlist-data-field {}
+.circularlist-next-field {}
+.circularlist-index-field {}
+
+/* Linked List */
+.LinkedlistList {}
+.user {} /* user defined */
+
+.LinkedList-root {}
+.LinkedList-node {}
+.LinkedList-node-user {} /* user defined */
+.LinkedList-node-index {} /* generated */
+.LinkedList-edge {}
+.LinkedList-edge-index {} /* generated */
+.LinkedList-edge-user {} /* user defined */
+
+.LinkedList-data-field {}
+.LinkedList-next-field {}
+.LinkedList-index-field {}

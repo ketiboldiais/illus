@@ -23,9 +23,8 @@ export const LinkedList = ({
 	data = [1,2,3,4,5],
 	width = 30.1049 * data.length + 70.1515,
 	height = 40,
-	containerWidth = 23.4209 * Math.log(20.5536 * data.length - 8.36375) -
-		21.1874,
-	containerHeight = 14,
+	containerWidth,
+	containerHeight,
 	margins = [10, 40, 10, 20],
 	isIndexed = true,
 }) => {

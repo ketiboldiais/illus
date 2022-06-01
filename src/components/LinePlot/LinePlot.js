@@ -38,23 +38,13 @@ const formatData = (arr = []) => {
 	return data;
 };
 
-const dAttribute = (d, xScale, yScale) => {
-	return d3
-		.line()
-		.x((d) => {
-			return xScale(d.x);
-		})
-		.y((d) => {
-			return yScale(d.y);
-		})(d[1]);
-};
-
 export const LinePlot = ({
 	data,
 	xMin = null,
 	xMax = null,
 	yMin = null,
 	yMax = null,
+	lineWidth = 2,
 	xAxisTickCount = 5,
 	yAxisTickCount = 5,
 	axisPadding = 0,
@@ -64,10 +54,14 @@ export const LinePlot = ({
 	xAxisLabel = "x",
 	yAxisLabel = "y",
 	width = 500,
-	height = 500,
-	containerWidth = 80,
-	containerHeight = 100,
-	margins = [40, 40, 40, 50 * (legend ? 2 : 1)],
+	height = 300,
+	containerWidth,
+	containerHeight,
+	marginTop = 40,
+	marginRight = 40,
+	marginBottom = 40,
+	marginLeft = 40,
+	margins = [marginTop, marginRight, marginBottom, marginLeft],
 }) => {
 	const LinePlotFigure = useRef();
 	const linePlotData = formatData(data);
@@ -111,16 +105,13 @@ export const LinePlot = ({
 			.append("path")
 			.attr("class", "trendline")
 			.attr("fill", "none")
-			.attr("d", (d) => {
-				return d3
+			.attr("d", (d) =>
+				d3
 					.line()
-					.x(function (d) {
-						return xScale(d.x);
-					})
-					.y(function (d) {
-						return yScale(d.y);
-					})(d[1]);
-			})
+					.x((d) => xScale(d.x))
+					.y((d) => yScale(d.y))(d[1]),
+			)
+			.attr("stroke-width", lineWidth)
 			.attr("stroke", (d) => legend[d[0]]);
 
 		const xAxisGroup = LinePlot.append("g")

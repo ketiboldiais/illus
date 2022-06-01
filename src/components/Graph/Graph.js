@@ -8,11 +8,11 @@ import * as d3 from "d3";
 
 export const Graph = ({
 	data = [[]],
-	fontFamily="system-ui",
+	fontFamily = "system-ui",
 	width = 500,
 	height = 500,
-	containerWidth = 95,
-	containerHeight = 95,
+	containerWidth,
+	containerHeight,
 	repulsion = 0.01,
 	edgeLength = 50,
 	collisionRadius = 10,
@@ -26,7 +26,7 @@ export const Graph = ({
 	nodeTextColor = "",
 	nodeTextFontSize = "0.8rem",
 }) => {
-	const MatrixFigure = useRef();
+	const _graphREF = useRef();
 	const _svg = svg(width, height, margins);
 	const edges = generateEdges(data);
 	const nodes = Object.values(generateNodes(data, edges));
@@ -47,14 +47,17 @@ export const Graph = ({
 		.force("collision", d3.forceCollide().radius(collisionRadius));
 
 	useEffect(() => {
-		const canvas = d3.select(MatrixFigure.current).select("g.svgElement");
+		const canvas = d3.select(_graphREF.current).select("g.svgElement");
 		const graph = canvas.append("g").attr("class", "graph");
 		const edgeEnter = graph
 			.selectAll("g.edges")
 			.data(edges)
 			.enter()
 			.append("g")
-			.attr("class", "graph-edge");
+			.attr(
+				"class",
+				(d) => `graph-edge${d.focus ? ` graph-edge-${d.focus}` : ""}`,
+			);
 		const edgeLines = edgeEnter.append("line");
 		attrs(edgeLines, {
 			class: "graph-edge-line",
@@ -66,16 +69,31 @@ export const Graph = ({
 			.data(nodes)
 			.enter()
 			.append("g")
-			.attr("class", "graph-node");
+			.attr("class", (d) =>
+				d.focus ? `graph-node graph-node-focus-${d.focus}` : `graph-node`,
+			);
 
-		const nodeCircles = nodeEnter.append("circle");
-		attrs(nodeCircles, {
-			class: "graph-node-circle",
-			r: nodeRadius,
-			fill: nodeFillColor,
-			stroke: nodeStrokeColor,
-			strokeWidth: nodeStrokeWidth,
-		});
+		const nodeCircles = nodeEnter
+			.append("circle")
+			.attr("class", "graph-node-circle")
+			.attr("r", (d) => (d.r ? d.r : nodeRadius))
+			.attr("stroke", (d) => (d.stroke ? d.stroke : nodeStrokeColor))
+			.attr("stroke-width", (d) =>
+				d.strokeWidth ? d.strokeWidth : nodeStrokeWidth,
+			)
+			.attr("fill", (d) => (d.fill ? d.fill : nodeFillColor));
+
+		const radial = nodeEnter
+			.filter((d) => d.radial)
+			.append("circle")
+			.attr("class", "graph-node-radial-circle")
+			.attr("r", (d) =>
+				typeof d.radial === "number" ? d.radial : radialRadius,
+			)
+			.attr("fill", (d) => (d.fill ? d.fill : nodeFillColor))
+			.attr("fill-opacity", 0.2)
+			.attr("stroke-width", 1)
+			.attr("stroke-opacity", 0.2);
 
 		const nodeTextOutline = nodeEnter.append("text").text((d) => d.id);
 
@@ -97,7 +115,8 @@ export const Graph = ({
 			"font-family": fontFamily,
 			"text-anchor": "middle",
 			fill: nodeTextColor,
-			dy: -11,
+			dy: (d) => (d.dy ? d.dy : nodeTextOffsetY),
+			dx: (d) => (d.dx ? d.dy : nodeTextOffsetX),
 			"font-size": nodeTextFontSize,
 		});
 
@@ -114,7 +133,7 @@ export const Graph = ({
 	});
 	return (
 		<Base
-			id={MatrixFigure}
+			id={_graphREF}
 			width={width}
 			height={height}
 			containerWidth={containerWidth}
